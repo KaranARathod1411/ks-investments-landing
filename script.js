@@ -25,7 +25,7 @@ window.addEventListener('load', function () {
   var qrOptions = {
     width:        164,
     height:       164,
-    colorDark:    '#0891B2',   /* cyan-dark, matches --cyan-dark */
+    colorDark:    '#000000',   /* pure black */
     colorLight:   '#FFFFFF',
     correctLevel: QRCode.CorrectLevel.H
   };
