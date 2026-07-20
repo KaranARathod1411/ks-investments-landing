@@ -467,17 +467,127 @@ body {
   background: linear-gradient(90deg, transparent, rgba(6,182,212,0.18), transparent);
 }
 
-/* Footer */
+/* Footer — Compliance layout */
 .footer {
-  text-align: center;
-  padding: 36px 28px;
-  border-top: 1px solid rgba(6,182,212,0.14);
-  color: var(--text-muted);
-  font-size: 0.86rem;
+  border-top: 1px solid rgba(6, 182, 212, 0.15);
+  background: rgba(255, 255, 255, 0.6);
   position: relative;
   z-index: 1;
-  background: rgba(255,255,255,0.35);
 }
+
+/* Main row: logo | divider | details | divider | contact */
+.footer-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding: 28px 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-logo-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* Vertical dividers */
+.footer-divider-v {
+  width: 1px;
+  height: 60px;
+  background: rgba(6, 182, 212, 0.3);
+  flex-shrink: 0;
+}
+
+/* Registration details */
+.footer-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.88rem;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+.footer-details strong {
+  color: var(--cyan-dark);
+  font-weight: 700;
+}
+
+/* Contact info */
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.88rem;
+}
+
+.footer-contact p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-icon {
+  font-size: 1rem;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+  color: var(--cyan-dark);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.footer-contact a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.footer-contact a:hover {
+  color: var(--cyan-dark);
+}
+
+/* AMFI Disclaimer bar */
+.footer-disclaimer {
+  background: #000000;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 24px;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 680px) {
+  .footer-main {
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .footer-divider-v {
+    width: 60px;
+    height: 1px;
+  }
+
+  .footer-contact p {
+    justify-content: center;
+  }
+}
+
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 600px) {
