@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KS Investments by Anil Rathod — Your Complete Financial Portfolio App</title>
+  <meta name="description" content="KS Investments by Anil Rathod — your one-stop solution for Mutual Funds, Equity Shares, Fixed Deposits, Insurance, SIP & more. Download on Android & iOS.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Background Glows -->
+  <div class="bg-glow bg-glow-1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-2" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-3" aria-hidden="true"></div>
+
+  <!-- ==================== MAIN SECTION (Hero + QR combined) ==================== -->
+  <main class="main-page" id="home">
+    <div class="main-content">
+
+      <!-- Brand -->
+      <div class="brand-wrap">
+        <img src="images/logo.png" class="logo" alt="KS Investments Logo">
+        <div class="brand-text">
+          <h1 class="hero-title"><span class="cyan-text">KS Investments</span></h1>
+          <p class="hero-byline">by Anil Rathod</p>
+        </div>
+      </div>
+
+      <p class="hero-tag">
+        One-stop solution for managing your <span class="gold">complete financial portfolio.</span>
+      </p>
+
+      <!-- QR Code + Badges — IMMEDIATELY VISIBLE -->
+      <div class="qr-grid">
+
+        <!-- App Store — FIRST -->
+        <div class="qr-card" id="qr-card-ios">
+          <div class="qr-top-bar"></div>
+          <p class="qr-platform-name">App Store</p>
+          <div class="qr-box-wrap">
+            <div class="qr-box" id="qr-ios"></div>
+          </div>
+          <p class="qr-hint">Scan to download for iPhone</p>
+          <a href="https://apps.apple.com/in/app/ks-investments-by-anil-rathod/id6782927035"
+             class="qr-badge-link"
+             target="_blank"
+             rel="noopener noreferrer"
+             id="app-store-link">
+            <img src="images/app-store.svg" alt="Download on the App Store" class="store-badge">
+          </a>
+        </div>
+
+        <!-- Google Play — SECOND -->
+        <div class="qr-card" id="qr-card-android">
+          <div class="qr-top-bar"></div>
+          <p class="qr-platform-name">Google Play</p>
+          <div class="qr-box-wrap">
+            <div class="qr-box" id="qr-android"></div>
+          </div>
+          <p class="qr-hint">Scan to download for Android</p>
+          <a href="https://play.google.com/store/apps/details?id=com.ksinvestments.mobile.app"
+             class="qr-badge-link"
+             target="_blank"
+             rel="noopener noreferrer"
+             id="play-store-link">
+            <img src="images/google-play.svg" alt="Get it on Google Play" class="store-badge">
+          </a>
+        </div>
+
+      </div>
+      <!-- End QR Grid -->
+
+    </div>
+  </main>
+
+  <!-- ==================== FEATURES SECTION ==================== -->
+  <section class="section features-section" id="features">
+    <div class="container">
+      <span class="section-badge">Features</span>
+      <h2 class="section-title">Everything You <span class="gold">Need</span></h2>
+      <p class="section-sub">A complete financial management platform built for modern investors.</p>
+
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon-wrap">📈</div><span class="feature-label">Mutual Funds</span></div>
+        <div class="feature-card"><div class="feature-icon-wrap">💹</div><span class="feature-label">Equity Shares</span></div>
+        <div class="feature-card"><div class="feature-icon-wrap">🏦</div><span class="feature-label">Fixed Deposits</span></div>
+        <div class="feature-card"><div class="feature-icon-wrap">🛡️</div><span class="feature-label">Insurance</span></div>
+        <div class="feature-card"><div class="feature-icon-wrap">📊</div><span class="feature-label">Portfolio Reports</span></div>
+        <div class="feature-card"><div class="feature-icon-wrap">🧮</div><span class="feature-label">SIP &amp; EMI Calculators</span></div>
+        <div class="feature-card"><div class="feature-icon-wrap">📑</div><span class="feature-label">Capital Gain Reports</span></div>
+        <div class="feature-card"><div class="feature-icon-wrap">💼</div><span class="feature-label">PMS &amp; Bonds</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT SECTION ==================== -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <span class="section-badge">Get in Touch</span>
+      <h2 class="section-title">Contact <span class="gold">Us</span></h2>
+
+      <div class="contact-card">
+        <div class="contact-card-glow" aria-hidden="true"></div>
+
+        <div class="contact-item">
+          <div class="contact-icon-wrap" aria-hidden="true">🏢</div>
+          <div class="contact-info">
+            <span class="contact-label">Company</span>
+            <span class="contact-value" id="contact-name">KS Investments</span>
+          </div>
+        </div>
+
+        <div class="contact-divider"></div>
+
+        <div class="contact-item">
+          <div class="contact-icon-wrap" aria-hidden="true">📞</div>
+          <div class="contact-info">
+            <span class="contact-label">Mobile</span>
+            <a href="tel:+919825245380" class="contact-value contact-link" id="contact-phone">
+              +91 98252 45380
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-divider"></div>
+
+        <div class="contact-item">
+          <div class="contact-icon-wrap" aria-hidden="true">📍</div>
+          <div class="contact-info">
+            <span class="contact-label">Address</span>
+            <span class="contact-value" id="contact-address">
+              C - 213 Sumel 11, Namaste Circle, Shahibaug
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <p>© 2026 <span class="gold">KS Investments</span> by Anil Rathod. All rights reserved.</p>
+  </footer>
+
+  <!-- QR Code Library (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <!-- Main Script -->
+  <script src="script.js"></script>
+</body>
+</html>

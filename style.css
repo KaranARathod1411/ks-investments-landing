@@ -1,0 +1,502 @@
+/* ============================================================
+   KS Investments — Light Blue & White Theme
+   Client-first layout: QR codes visible immediately, no scrolling needed
+   ============================================================ */
+
+/* ---------- RESET & BASE ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cyan:          #06B6D4;
+  --cyan-dark:     #0891B2;
+  --cyan-light:    #22D3EE;
+  --cyan-dim:      rgba(6, 182, 212, 0.12);
+  --cyan-border:   rgba(6, 182, 212, 0.25);
+  --bg-gradient:   linear-gradient(145deg, #CAF0F8 0%, #DBF0FA 30%, #EDF6FF 65%, #F0F8FF 100%);
+  --white:         #FFFFFF;
+  --card-bg:       rgba(255, 255, 255, 0.88);
+  --card-shadow:   0 4px 32px rgba(6, 182, 212, 0.1), 0 1px 4px rgba(0, 0, 0, 0.05);
+  --card-shadow-hover: 0 16px 56px rgba(6, 182, 212, 0.22), 0 4px 16px rgba(0, 0, 0, 0.08);
+  --text-primary:  #0F172A;
+  --text-dark:     #1E293B;
+  --text-muted:    #64748B;
+  --text-light:    #94A3B8;
+  --radius-card:   20px;
+  --radius-pill:   100px;
+  --transition:    0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: 'Outfit', 'Arial', sans-serif;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-dark);
+  overflow-x: hidden;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ---------- AMBIENT BACKGROUND BLOBS ---------- */
+.bg-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-glow-1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(6,182,212,0.18) 0%, transparent 70%);
+  top: -150px; left: -200px;
+  animation: glow-breathe 10s ease-in-out infinite alternate;
+}
+
+.bg-glow-2 {
+  width: 450px; height: 450px;
+  background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+  top: 40%; right: -150px;
+  animation: glow-breathe 13s ease-in-out infinite alternate-reverse;
+}
+
+.bg-glow-3 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%);
+  bottom: 100px; left: 30%;
+  animation: glow-breathe 9s ease-in-out infinite alternate;
+}
+
+@keyframes glow-breathe {
+  from { opacity: 0.5; transform: scale(0.95); }
+  to   { opacity: 1;   transform: scale(1.08); }
+}
+
+/* ---------- UTILITY ---------- */
+.gold     { color: var(--cyan); }
+.cyan-text { color: var(--cyan-dark); }
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 28px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   MAIN PAGE — Hero + QR codes, all above the fold
+   ============================================================ */
+.main-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 28px 56px;
+  position: relative;
+  z-index: 1;
+  animation: page-fade 0.8s ease both;
+}
+
+@keyframes page-fade {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.main-content {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+/* ---------- BRAND (logo + title side by side) ---------- */
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  justify-content: center;
+}
+
+.logo {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  border-radius: 20px;
+  padding: 8px;
+  background: var(--white);
+  border: 1.5px solid var(--cyan-border);
+  box-shadow:
+    0 0 0 5px rgba(6,182,212,0.07),
+    0 0 40px rgba(6,182,212,0.18),
+    0 8px 24px rgba(0,0,0,0.08);
+  flex-shrink: 0;
+  animation: logo-float 5s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,100% { transform: translateY(0px);  }
+  50%      { transform: translateY(-6px); }
+}
+
+.brand-text {
+  text-align: left;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.05;
+  margin-bottom: 4px;
+}
+
+.hero-byline {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ---------- TAGLINE ---------- */
+.hero-tag {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 500px;
+  margin-top: -4px;
+}
+
+/* ============================================================
+   QR GRID — side by side, compact
+   ============================================================ */
+.qr-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.qr-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(6,182,212,0.2);
+  border-radius: 22px;
+  padding: 28px 24px 24px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 232px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.qr-top-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  opacity: 0.85;
+}
+
+.qr-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(6,182,212,0.4);
+}
+
+.qr-platform-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.2px;
+}
+
+.qr-box-wrap {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 2px 12px rgba(6,182,212,0.12);
+  border: 1px solid rgba(6,182,212,0.1);
+}
+
+.qr-box {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.qr-box canvas,
+.qr-box img {
+  width: 150px !important;
+  height: 150px !important;
+  display: block;
+}
+
+.qr-hint {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  letter-spacing: 0.2px;
+}
+
+/* Store badge image */
+.qr-badge-link {
+  display: block;
+  line-height: 0;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.qr-badge-link:hover {
+  opacity: 0.82;
+  transform: scale(1.04);
+}
+
+.store-badge {
+  height: 40px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* ============================================================
+   FEATURES & CONTACT SECTIONS (secondary, for scroll)
+   ============================================================ */
+.section {
+  padding: 80px 0;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.section::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, transparent, var(--cyan-border), transparent);
+  margin: 0 auto -50px;
+}
+
+.section-badge {
+  display: inline-block;
+  background: var(--cyan-dim);
+  border: 1px solid var(--cyan-border);
+  border-radius: var(--radius-pill);
+  padding: 5px 16px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--cyan-dark);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.section-sub {
+  font-size: 0.97rem;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0 auto 48px;
+  line-height: 1.75;
+}
+
+/* Features */
+.features-section {
+  background: rgba(255,255,255,0.25);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  text-align: left;
+}
+
+.feature-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(6,182,212,0.14);
+  border-radius: var(--radius-card);
+  padding: 22px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--card-shadow);
+  cursor: default;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(6,182,212,0.35);
+}
+
+.feature-icon-wrap {
+  font-size: 1.5rem;
+  width: 46px; height: 46px; min-width: 46px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--cyan-dim);
+  border: 1px solid var(--cyan-border);
+  border-radius: 12px;
+  transition: background var(--transition);
+}
+
+.feature-card:hover .feature-icon-wrap { background: rgba(6,182,212,0.2); }
+
+.feature-label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.3;
+}
+
+/* Contact */
+.contact-card {
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border: 1px solid rgba(6,182,212,0.2);
+  border-radius: 26px;
+  padding: 40px 38px;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  opacity: 0.8;
+}
+
+.contact-card-glow {
+  position: absolute;
+  top: -80px; left: 50%; transform: translateX(-50%);
+  width: 260px; height: 160px;
+  background: radial-gradient(circle, rgba(6,182,212,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 18px 0;
+}
+
+.contact-icon-wrap {
+  font-size: 1.3rem;
+  width: 48px; height: 48px; min-width: 48px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--cyan-dim);
+  border: 1px solid var(--cyan-border);
+  border-radius: 13px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 4px;
+}
+
+.contact-label {
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+.contact-value {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  line-height: 1.45;
+}
+
+.contact-link {
+  color: var(--cyan-dark);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--transition);
+}
+
+.contact-link:hover {
+  color: var(--cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(6,182,212,0.18), transparent);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 36px 28px;
+  border-top: 1px solid rgba(6,182,212,0.14);
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  position: relative;
+  z-index: 1;
+  background: rgba(255,255,255,0.35);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+  .main-page { padding: 36px 20px 44px; }
+
+  .brand-wrap { flex-direction: column; gap: 12px; }
+  .brand-text  { text-align: center; }
+
+  .logo { width: 76px; height: 76px; }
+
+  .qr-card { width: 100%; max-width: 280px; }
+
+  .contact-card { padding: 30px 20px; }
+
+  .section { padding: 64px 0; }
+
+  .features-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 380px) {
+  .features-grid { grid-template-columns: 1fr; }
+}
