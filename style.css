@@ -569,6 +569,22 @@ body {
   line-height: 1.5;
 }
 
+/* Copyright bar */
+.footer-copyright {
+  text-align: center;
+  padding: 12px 24px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.5);
+  border-top: 1px solid rgba(6, 182, 212, 0.1);
+}
+
+.footer-copyright strong {
+  color: var(--cyan-dark);
+  font-weight: 700;
+}
+
+
 /* Responsive */
 @media (max-width: 680px) {
   .footer-main {
